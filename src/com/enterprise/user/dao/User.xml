@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.enterprise.user.dao.UserMapper">
+
+	<select id="countByUserName" resultType="java.lang.Integer" parameterType="java.lang.String">
+		SELECT COUNT(*) FROM t_user WHERE loginname = #{userName}
+	</select>
+
+	<insert id="insertUser" parameterType="com.enterprise.common.entity.User">
+		insert into t_user values (
+			#{uid,jdbcType=CHAR},
+			#{loginname,jdbcType=VARCHAR},
+			#{loginpass,jdbcType=VARCHAR},
+			#{email,jdbcType=VARCHAR},
+			#{status,jdbcType=INTEGER},
+			#{activationCode,jdbcType=CHAR}
+		)
+	</insert>
+
+</mapper>
